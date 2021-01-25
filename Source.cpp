@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<int> v;
+
 class TreeNode {
 public:
 	int data;
@@ -13,6 +13,7 @@ public:
 };
 class BinarySearchTree {
 	TreeNode* root;
+	vector<int> v;
 public:
 	BinarySearchTree(TreeNode* root = NULL) :root(root) {}
 
@@ -32,7 +33,7 @@ public:
 		root = insert(root, data);
 	}
 	int maxSumbranch(TreeNode* root)
-	{
+	{   
 		if (root) {
 
 			int left = maxSumbranch(root->left);
@@ -54,13 +55,13 @@ public:
 		if (root == nullptr)
 			return false;
 
-
 		bool left = findPath(root->left, maxsum - root->data);
 		bool right = findPath(root->right, maxsum - root->data);
 
-
-		if (left || right)
-			v.push_back(root->data);
+        if (left || right)
+		v.push_back(root->data);
+		
+			
 
 		return left || right;
 	}
@@ -97,7 +98,7 @@ int main()
 
 	BinarySearchTree btree(n1);
 	
-	/*For sorted binary tree
+	/*FOR SORTED BINARY TREE
 	/*BinarySearchTree btree;
 	btree.insert(5);
 	btree.insert(4);
